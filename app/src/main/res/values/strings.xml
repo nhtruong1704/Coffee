@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Coffee</string>
+    <string name="intro_app">THE COFFEE SHOP</string>
+    <string name="intro_text">Discover the convenience \n of ordering your favorite coffee \n with just a few taps. </string>
+    <string name="intro_signin"><font color="#FF69a9cd"> Sign Up</font></string>
+
+
+</resources>

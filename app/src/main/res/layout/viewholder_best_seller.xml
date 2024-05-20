@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="215dp"
+    android:layout_margin="8dp">
+
+    <ImageView
+        android:id="@+id/picBestSeller"
+        android:layout_width="164dp"
+        android:layout_height="164dp"
+        android:background="@drawable/peach_bg_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    <TextView
+        android:id="@+id/priceTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/fira_sans_semi_bold"
+        android:text="₽-"
+        android:textColor="@color/light_black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/picBestSeller" />
+
+    <TextView
+        android:id="@+id/ratingTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        android:textSize="15sp"
+        android:layout_marginEnd="4dp"
+        android:textColor="@color/light_black"
+        android:fontFamily="@font/fira_sans_regular"
+        app:layout_constraintBottom_toBottomOf="@+id/priceTxt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/priceTxt" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ratingTxt"
+        app:layout_constraintEnd_toStartOf="@+id/ratingTxt"
+        app:layout_constraintTop_toTopOf="@+id/ratingTxt"
+        app:srcCompat="@drawable/star" />
+
+    <TextView
+        android:id="@+id/titleTxt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="title"
+        android:textColor="@color/light_black"
+        android:textSize="16sp"
+        android:fontFamily="@font/fira_sans_regular"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/priceTxt" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
