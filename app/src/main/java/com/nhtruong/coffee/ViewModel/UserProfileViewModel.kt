@@ -22,18 +22,18 @@ class UserProfileViewModel : ViewModel() {
         }
     }
 
-    fun updateUserData(name: String, email: String, phone: String) {
+    fun updateUserData(name: String, email: String, phone: String, imageUrl: String = "") {
         val userId = auth.currentUser?.uid ?: return
-        val userMap = mapOf(
+        val userMap = mutableMapOf<String, Any>(
             "name" to name,
             "email" to email,
-            "phone" to phone,
-
+            "phone" to phone
         )
+        if (imageUrl.isNotEmpty()) {
+            userMap["imageUrl"] = imageUrl
+        }
         database.getReference("Users").child(userId).updateChildren(userMap)
-
     }
-
 
 
 

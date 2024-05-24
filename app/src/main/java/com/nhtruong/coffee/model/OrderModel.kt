@@ -5,6 +5,7 @@ data class OrderModel(
     var userId: String = "",
     var orderDate: String = "",
     var orderStatus: String = "",
+    var userName: String = "",
     var orderTotal: Double = 0.0,
     var orderItems: ArrayList<ItemsModel> = ArrayList()
 )

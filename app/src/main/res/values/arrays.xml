@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="drink_category_array">
+        <item>Coffee</item>
+        <item>Milk Tea</item>
+        <item>Fruit Tea</item>
+        <item>Green Tea</item>
+        <item>Topping</item>
+    </string-array>
+</resources>
