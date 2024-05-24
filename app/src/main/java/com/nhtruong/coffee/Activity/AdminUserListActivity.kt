@@ -1,13 +1,16 @@
 package com.nhtruong.coffee.Activity
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.*
 import com.nhtruong.coffee.Adapter.AdminUserListAdapter
+import com.nhtruong.coffee.R
 import com.nhtruong.coffee.databinding.ActivityAdminUserListBinding
 import com.nhtruong.coffee.model.UserModel
 
@@ -22,7 +25,10 @@ class AdminUserListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAdminUserListBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.statusBarColor = ContextCompat.getColor(this, R.color.terra_red)
+            window.navigationBarColor = ContextCompat.getColor(this, R.color.white)
+        }
         setupRecyclerView()
         setupSearch()
         binding.btnBack.setOnClickListener { startActivity(Intent(this@AdminUserListActivity, AdminMainActivity::class.java)) }

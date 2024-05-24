@@ -1,12 +1,15 @@
 package com.nhtruong.coffee.Activity
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.nhtruong.coffee.Adapter.FavoriteAdapter
+import com.nhtruong.coffee.R
 import com.nhtruong.coffee.model.FavoriteModel
 import com.nhtruong.coffee.databinding.ActivityUserFavoritesBinding
 
@@ -29,7 +32,10 @@ class UserFavoritesActivity : AppCompatActivity() {
 
         firebaseAuth = FirebaseAuth.getInstance()
         databaseReference = FirebaseDatabase.getInstance().getReference("Favorites").child(firebaseAuth.currentUser?.uid ?: "")
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.statusBarColor = ContextCompat.getColor(this, R.color.terra_red)
+            window.navigationBarColor = ContextCompat.getColor(this, R.color.white)
+        }
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val favorites = dataSnapshot.children.mapNotNull { it.getValue(FavoriteModel::class.java) }

@@ -1,13 +1,16 @@
 package com.nhtruong.coffee.Activity
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.*
 import com.nhtruong.coffee.Adapter.AdminOrderListAdapter
+import com.nhtruong.coffee.R
 import com.nhtruong.coffee.databinding.ActivityAdminOrderListBinding
 import com.nhtruong.coffee.model.OrderModel
 import com.nhtruong.coffee.model.UserModel
@@ -28,7 +31,10 @@ class AdminOrderListActivity : AppCompatActivity() {
         orderAdapter = AdminOrderListAdapter(orderList)
         binding.cartView.layoutManager = LinearLayoutManager(this)
         binding.cartView.adapter = orderAdapter
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.statusBarColor = ContextCompat.getColor(this, R.color.terra_red)
+            window.navigationBarColor = ContextCompat.getColor(this, R.color.white)
+        }
         databaseReference = FirebaseDatabase.getInstance().getReference("Orders")
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {

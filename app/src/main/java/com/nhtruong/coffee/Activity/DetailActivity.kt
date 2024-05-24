@@ -1,11 +1,13 @@
 package com.nhtruong.coffee.Activity
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.RadioButton
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
@@ -40,7 +42,10 @@ class DetailActivity : AppCompatActivity() {
         setContentView(binding.root)
         managmentCart= ManagmentCart(this)
         getBundle()
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.statusBarColor = ContextCompat.getColor(this, R.color.terra_red)
+            window.navigationBarColor = ContextCompat.getColor(this, R.color.white)
+        }
         val drinkId = intent.getStringExtra("drinkId")
         if (drinkId != null) {
             val itemsRef = FirebaseDatabase.getInstance().getReference("Items").child(drinkId)

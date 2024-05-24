@@ -3,10 +3,13 @@ package com.nhtruong.coffee.Activity
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import com.nhtruong.coffee.R
 import com.nhtruong.coffee.ViewModel.SignInViewModel
 import com.nhtruong.coffee.databinding.ActivitySignInBinding
 
@@ -18,6 +21,10 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.statusBarColor = ContextCompat.getColor(this, R.color.terra_red)
+            window.navigationBarColor = ContextCompat.getColor(this, R.color.white)
+        }
         binding.btnSignIn.setOnClickListener {
             val email = binding.edtEmailSignIn.text.toString().trim()
             val password = binding.edtPasswordSignIn.text.toString().trim()

@@ -1,11 +1,14 @@
 package com.nhtruong.coffee.Activity
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.*
 import com.nhtruong.coffee.Adapter.OrderDetailAdapter
+import com.nhtruong.coffee.R
 import com.nhtruong.coffee.model.OrderModel
 import com.nhtruong.coffee.databinding.ActivityUserOrderDetailBinding
 
@@ -20,7 +23,10 @@ class UserOrderDetailActivity : AppCompatActivity() {
         binding.btnBack.setOnClickListener { startActivity(Intent(this@UserOrderDetailActivity, UserOrderActivity::class.java)) }
         val orderId = intent.getStringExtra("orderId") ?: return
         database = FirebaseDatabase.getInstance().getReference("Orders").child(orderId)
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.statusBarColor = ContextCompat.getColor(this, R.color.terra_red)
+            window.navigationBarColor = ContextCompat.getColor(this, R.color.white)
+        }
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val order = snapshot.getValue(OrderModel::class.java) ?: return

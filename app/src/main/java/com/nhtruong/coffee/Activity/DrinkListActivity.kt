@@ -1,12 +1,15 @@
 package com.nhtruong.coffee.Activity
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.*
 import com.nhtruong.coffee.Adapter.CategoryAdapter
 import com.nhtruong.coffee.Adapter.ItemsAdapter
+import com.nhtruong.coffee.R
 import com.nhtruong.coffee.databinding.ActivityDrinkListBinding
 import com.nhtruong.coffee.model.CategoryModel
 import com.nhtruong.coffee.model.ItemsModel
@@ -20,7 +23,10 @@ class DrinkListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDrinkListBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.statusBarColor = ContextCompat.getColor(this, R.color.terra_red)
+            window.navigationBarColor = ContextCompat.getColor(this, R.color.white)
+        }
         val categoryTitle = intent.getStringExtra("categoryTitle")
         if (categoryTitle != null) {
             binding.tvCatergoryName.text = categoryTitle

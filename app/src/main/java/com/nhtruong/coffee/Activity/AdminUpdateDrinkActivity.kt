@@ -3,11 +3,13 @@ package com.nhtruong.coffee.Activity
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.google.firebase.storage.FirebaseStorage
@@ -34,7 +36,10 @@ class AdminUpdateDrinkActivity : AppCompatActivity() {
         storageReference = FirebaseStorage.getInstance().reference
 
         drinkId = intent.getStringExtra("drinkId") ?: return
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.statusBarColor = ContextCompat.getColor(this, R.color.terra_red)
+            window.navigationBarColor = ContextCompat.getColor(this, R.color.white)
+        }
         // Setup Spinner
         ArrayAdapter.createFromResource(
             this,

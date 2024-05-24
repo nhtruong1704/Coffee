@@ -1,8 +1,10 @@
 package com.nhtruong.coffee.Activity
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -23,7 +25,10 @@ class UserOrderActivity : AppCompatActivity() {
         binding.btnBack.setOnClickListener { startActivity(Intent(this@UserOrderActivity, MainActivity::class.java)) }
         database = FirebaseDatabase.getInstance().getReference("Orders")
         val userId = FirebaseAuth.getInstance().currentUser?.uid ?: ""
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.statusBarColor = ContextCompat.getColor(this, R.color.terra_red)
+            window.navigationBarColor = ContextCompat.getColor(this, R.color.white)
+        }
         database.orderByChild("userId").equalTo(userId).addValueEventListener(object :
             ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {

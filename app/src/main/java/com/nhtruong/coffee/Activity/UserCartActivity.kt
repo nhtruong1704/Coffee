@@ -1,15 +1,18 @@
 package com.nhtruong.coffee.Activity
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nhtruong.coffee.Helper.ManagmentCart
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.nhtruong.coffee.Adapter.CartAdapter
 import com.nhtruong.coffee.Helper.ChangeNumberItemsListener
+import com.nhtruong.coffee.R
 import com.nhtruong.coffee.databinding.ActivityCartBinding
 import com.nhtruong.coffee.model.OrderModel
 import java.text.SimpleDateFormat
@@ -23,7 +26,10 @@ class UserCartActivity : AppCompatActivity() {
         binding = ActivityCartBinding.inflate(layoutInflater)
         setContentView(binding.root)
         managmentCart = ManagmentCart(this)
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.statusBarColor = ContextCompat.getColor(this, R.color.terra_red)
+            window.navigationBarColor = ContextCompat.getColor(this, R.color.white)
+        }
 
         initCartList()
         calculateCart()

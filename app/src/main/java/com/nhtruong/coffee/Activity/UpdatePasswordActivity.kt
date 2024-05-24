@@ -1,12 +1,15 @@
 package com.nhtruong.coffee.Activity
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.text.method.PasswordTransformationMethod
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
+import com.nhtruong.coffee.R
 import com.nhtruong.coffee.ViewModel.UpdatePasswordViewModel
 import com.nhtruong.coffee.databinding.ActivityUpdatePasswordBinding
 
@@ -27,8 +30,10 @@ class UpdatePasswordActivity : AppCompatActivity() {
         binding = ActivityUpdatePasswordBinding.inflate(layoutInflater)
         setContentView(binding.root)
         viewModel = ViewModelProvider(this).get(UpdatePasswordViewModel::class.java)
-
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.statusBarColor = ContextCompat.getColor(this, R.color.terra_red)
+            window.navigationBarColor = ContextCompat.getColor(this, R.color.white)
+        }
         binding.ivBack.setOnClickListener {
 
             finish()

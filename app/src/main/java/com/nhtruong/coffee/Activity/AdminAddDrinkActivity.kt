@@ -3,11 +3,13 @@ package com.nhtruong.coffee.Activity
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.storage.FirebaseStorage
 import com.nhtruong.coffee.R
@@ -29,7 +31,10 @@ class AdminAddDrinkActivity : AppCompatActivity() {
         binding = ActivityAdminAddDrinkBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.btnBack.setOnClickListener { startActivity(Intent(this@AdminAddDrinkActivity, AdminMainActivity::class.java)) }
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.statusBarColor = ContextCompat.getColor(this, R.color.terra_red)
+            window.navigationBarColor = ContextCompat.getColor(this, R.color.white)
+        }
         viewModel = ViewModelProvider(this).get(AdminAddDrinkViewModel::class.java)
 
         // Thiết lập ArrayAdapter cho Spinner
