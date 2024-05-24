@@ -32,7 +32,7 @@ class UpdatePasswordActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(UpdatePasswordViewModel::class.java)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.statusBarColor = ContextCompat.getColor(this, R.color.terra_red)
-            window.navigationBarColor = ContextCompat.getColor(this, R.color.white)
+            window.navigationBarColor = ContextCompat.getColor(this, R.color.peach)
         }
         binding.ivBack.setOnClickListener {
 

@@ -36,7 +36,7 @@ class UserProfileActivity : AppCompatActivity() {
         setContentView(binding.root)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.statusBarColor = ContextCompat.getColor(this, R.color.terra_red)
-            window.navigationBarColor = ContextCompat.getColor(this, R.color.white)
+            window.navigationBarColor = ContextCompat.getColor(this, R.color.peach)
         }
         viewModel = ViewModelProvider(this).get(UserProfileViewModel::class.java)
         storageReference = FirebaseStorage.getInstance().reference

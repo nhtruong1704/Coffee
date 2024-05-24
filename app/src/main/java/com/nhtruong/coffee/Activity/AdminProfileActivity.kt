@@ -137,7 +137,7 @@ class AdminProfileActivity : AppCompatActivity() {
         storageReference = FirebaseStorage.getInstance().reference
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.statusBarColor = ContextCompat.getColor(this, R.color.terra_red)
-            window.navigationBarColor = ContextCompat.getColor(this, R.color.white)
+            window.navigationBarColor = ContextCompat.getColor(this, R.color.peach)
         }
         viewModel.getUserData { user ->
             binding.etName.setText(user.name)

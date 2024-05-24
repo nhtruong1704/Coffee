@@ -19,7 +19,7 @@ class SignUpActivity : AppCompatActivity() {
         setContentView(binding.root)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.statusBarColor = ContextCompat.getColor(this, R.color.terra_red)
-            window.navigationBarColor = ContextCompat.getColor(this, R.color.white)
+            window.navigationBarColor = ContextCompat.getColor(this, R.color.peach)
         }
         binding.btnSignUp.setOnClickListener {
             val name = binding.edtName.text.toString().trim()
